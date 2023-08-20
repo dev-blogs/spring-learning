@@ -6,7 +6,7 @@ import com.example.config.Factory;
 
 public class App {
 	public static void main(String[] args) {
-		BeanFactory factory = Factory.getApplicationContext("app-context-annotation.xml");
+		BeanFactory factory = Factory.getBeanFactory("app-context-annotation.xml");
 		MessageRenderer mr = (MessageRenderer) factory.getBean("renderer");
 		mr.render();
 	}
