@@ -1,9 +1,9 @@
 package com.example.beans;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component("renderer")
+@Service("renderer")
 public class StandardOutMessageRenderer implements MessageRenderer {
 	@Autowired
     private MessageProvider messageProvider;
