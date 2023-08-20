@@ -7,14 +7,14 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.FileSystemResource;
 
 public class Factory {
-	public static BeanFactory getBeanFactory(String path) {
+	public static BeanFactory getBeanFactory(String contextPath) {
 		DefaultListableBeanFactory factory = new DefaultListableBeanFactory();
 		XmlBeanDefinitionReader rdr = new XmlBeanDefinitionReader(factory);
-		rdr.loadBeanDefinitions(new FileSystemResource(path));
+		rdr.loadBeanDefinitions(new FileSystemResource(contextPath));
 		return factory;
 	}
 	
-	public static BeanFactory getApplicationContext(String path) {
-		return new ClassPathXmlApplicationContext(path);
+	public static BeanFactory getApplicationContext(String contextPath) {
+		return new ClassPathXmlApplicationContext(contextPath);
 	}
 }
