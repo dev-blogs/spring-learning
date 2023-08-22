@@ -9,11 +9,30 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
   
-  	<!-- <bean id="provider" class="com.example.beans.ConfigurableMessageProvider">
+  	<bean id="provider" class="com.example.beans.ConfigurableMessageProvider">
   		<constructor-arg>
   			<value>This is configurable message</value>
   		</constructor-arg>
-  	</bean> -->
-	<bean id="provider" class="com.example.beans.ConfigurableMessageProvider" c:message="This is configurable message" />
+  	</bean>
 	<bean id="renderer" class="com.example.beans.StandardOutMessageRenderer" p:messageProvider-ref="provider" />
+	
+	<bean id="injectSimpleConfig" class="com.example.config.InjectSimpleConfig" />
+	
+	<bean id="injectSimpleSpel" class="com.example.spel.InjectSimpleSpel">
+		<property name="name">
+			<value>#{injectSimpleConfig.name}</value>
+		</property>
+		<property name="age">
+			<value>#{injectSimpleConfig.age + 1}</value>
+		</property>
+		<property name="height">
+			<value>#{injectSimpleConfig.height}</value>
+		</property>
+		<property name="programmer">
+			<value>#{injectSimpleConfig.programmer}</value>
+		</property>
+		<property name="ageInSeconds">
+			<value>#{injectSimpleConfig.ageInSeconds}</value>
+		</property>
+	</bean>
 </beans>
