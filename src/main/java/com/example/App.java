@@ -6,7 +6,7 @@ import com.example.spel.InjectSimpleSpel;
 
 public class App {
 	public static void main(String[] args) {
-		BeanFactory factory = Factory.getBeanFactory("src/main/resources/app-context-xml.xml");
+		BeanFactory factory = Factory.getXmlApplicationContext("app-context-xml.xml");
 		InjectSimpleSpel simple = (InjectSimpleSpel) factory.getBean("injectSimpleSpel");
 		System.out.println(simple);
 	}
