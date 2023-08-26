@@ -9,11 +9,28 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
   
-  	<!-- <bean id="provider" class="com.example.beans.ConfigurableMessageProvider">
-  		<constructor-arg>
-  			<value>This is configurable message</value>
-  		</constructor-arg>
-  	</bean> -->
-	<bean id="provider" class="com.example.beans.ConfigurableMessageProvider" c:message="This is configurable message" />
-	<bean id="renderer" class="com.example.beans.StandardOutMessageRenderer" p:messageProvider-ref="provider" />
+	<bean id="target1" class="com.example.beans.SimpleTarget">
+		<property name="val">
+			<ref bean="injectBeanParent"/>
+		</property>
+	</bean>
+	
+	<bean id="target2" class="com.example.beans.SimpleTarget">
+		<property name="val">
+			<ref bean="injectBean"/>
+		</property>
+	</bean>
+	
+	<bean id="target3" class="com.example.beans.SimpleTarget">
+		<property name="val">
+			<ref parent="injectBean"/>
+		</property>
+	</bean>
+	
+	<bean id="injectBean" class="com.example.beans.StringWrapper">
+		<constructor-arg>
+			<value>Bean in child</value>
+		</constructor-arg>
+	</bean>
+	
 </beans>
