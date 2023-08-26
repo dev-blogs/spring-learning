@@ -1,7 +1,6 @@
 package com.example;
 
 import org.springframework.context.support.GenericXmlApplicationContext;
-
 import com.example.beans.SimpleTarget;
 
 public class App {
