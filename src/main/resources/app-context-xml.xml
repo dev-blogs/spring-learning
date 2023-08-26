@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+  
+	<bean id="oracle" class="com.example.beans.BookwormOracle" />
+
+	<bean id="injectCollection" class="com.example.beans.CollectionInjection">
+		<property name="map">
+			<map>
+				<entry key="someValue">
+					<value>test value in map</value>
+				</entry>
+				<entry key="someBean">
+					<ref local="oracle" />
+				</entry>
+			</map>
+		</property>
+		<property name="set">
+			<set>
+				<value>test value in set</value>
+				<ref local="oracle" />
+			</set>
+		</property>
+		<property name="list">
+			<list>
+				<value>test value in list</value>
+				<ref local="oracle" />
+			</list>
+		</property>
+		<property name="props">
+			<props>
+				<prop key="firstName">first value in props</prop>
+				<prop key="secondName">second value in props</prop>
+			</props>
+		</property>
+	</bean>
+</beans>
