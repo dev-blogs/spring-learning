@@ -27,8 +27,8 @@ public class CollectionInjection {
     private Properties props;
 
     /**
-     * The difference between @Autowired and @Resource is that @Autowired collects all beans of type which
-     * defines its declaration whereas @Resource annotation with its qualifier looks for exactly qualified
+     * The difference between @Autowired and @Resource annotations is that @Autowired collects all beans of type which
+     * defines in its declaration whereas @Resource annotation with its qualifier looks for exactly qualified
      * bean, in this case bean with id "list"
      * @return
      */
