@@ -10,6 +10,9 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
+/**
+ * see https://stackoverflow.com/questions/22589302/where-is-javax-annotation for understanding @Resource annotation
+ */
 @Service("injectCollection")
 public class CollectionInjection {
     @Resource(name = "map")
