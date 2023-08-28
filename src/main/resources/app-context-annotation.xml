@@ -13,6 +13,9 @@
 	<context:annotation-config />
 	<context:component-scan base-package="com.example.beans" />
 
+	<bean id="oracle1" class="com.example.beans.BookwormOracle" />
+	<bean id="oracle2" class="com.example.beans.BookwormOracle" />
+
 	<util:map id="map" map-class="java.util.HashMap">
 		<entry key="someValue">
 			<value>test value in map</value>

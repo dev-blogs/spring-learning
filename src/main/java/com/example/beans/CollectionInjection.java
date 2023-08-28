@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 
@@ -18,17 +20,17 @@ public class CollectionInjection {
     @Resource(name = "set")
     private Set set;
     @Resource(name = "list")
-    private List list;
+    private List<Oracle> list;
+    @Autowired
+    private List<Oracle> anoterList;
     @Resource(name = "props")
     private Properties props;
 
     @Override
     public String toString() {
         return "CollectionInjection{" +
-                "map=" + map +
-                ", set=" + set +
-                ", list=" + list +
-                ", props=" + props +
+                "list=" + list +
+                ", anoterList=" + anoterList +
                 '}';
     }
 }
