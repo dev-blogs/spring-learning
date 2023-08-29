@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:p="http://www.springframework.org/schema/p"
-  xmlns:c="http://www.springframework.org/schema/c"
   xmlns:context="http://www.springframework.org/schema/context"
   xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="helper" class="com.example.beans.MyHelper" scope="prototype" />
+
+    <bean id="abstractLookupBean" class="com.example.beans.AbstractLookupDemoBean">
+        <lookup-method name="getMyHelper" bean="helper" />
+    </bean>
+
+    <bean id="standardLookupBean" class="com.example.beans.StandardLookupDemoBean">
+        <property name="myHelper">
+            <ref local="helper" />
+        </property>
+    </bean>
   
-  	<!-- <bean id="provider" class="com.example.beans.ConfigurableMessageProvider">
-  		<constructor-arg>
-  			<value>This is configurable message</value>
-  		</constructor-arg>
-  	</bean> -->
-	<bean id="provider" class="com.example.beans.ConfigurableMessageProvider" c:message="This is configurable message" />
-	<bean id="renderer" class="com.example.beans.StandardOutMessageRenderer" p:messageProvider-ref="provider" />
 </beans>
