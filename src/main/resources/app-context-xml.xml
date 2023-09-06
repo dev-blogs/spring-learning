@@ -7,16 +7,14 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="helper" class="com.example.beans.MyHelper" scope="prototype" />
+    <bean id="methodReplacer" class="com.example.beans.MessageReplacer" />
 
-    <bean id="abstractLookupBean" class="com.example.beans.AbstractLookupDemoBean">
-        <lookup-method name="getMyHelper" bean="helper" />
+    <bean id="replacementTarget" class="com.example.beans.ReplacementTarget">
+        <replaced-method name="message" replacer="methodReplacer">
+            <arg-type>String</arg-type>
+        </replaced-method>
     </bean>
 
-    <bean id="standardLookupBean" class="com.example.beans.StandardLookupDemoBean">
-        <property name="myHelper">
-            <ref local="helper" />
-        </property>
-    </bean>
+    <bean id="standardTarget" class="com.example.beans.ReplacementTarget" />
   
 </beans>

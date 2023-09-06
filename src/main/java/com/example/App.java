@@ -1,6 +1,6 @@
 package com.example;
 
-import com.example.beans.DemoBean;
+import com.example.beans.ReplacementTarget;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 public class App {
@@ -9,17 +9,10 @@ public class App {
 		ctx.load(String.format("classpath:%s", "app-context-xml.xml"));
 		ctx.refresh();
 
-		DemoBean demoBean1 = (DemoBean) ctx.getBean("abstractLookupBean");
-		DemoBean demoBean2 = (DemoBean) ctx.getBean("standardLookupBean");
+		ReplacementTarget replacementTarget = (ReplacementTarget) ctx.getBean("replacementTarget");
+		ReplacementTarget standardTarget = (ReplacementTarget) ctx.getBean("standardTarget");
 
-		demoBean1.someOperation();
-		demoBean1.someOperation();
-		demoBean1.someOperation();
-
-		System.out.println("---------------------");
-
-		demoBean2.someOperation();
-		demoBean2.someOperation();
-		demoBean2.someOperation();
+		System.out.println(replacementTarget.message("test replacement"));
+		System.out.println(standardTarget.message("test standard replacement"));
 	}
 }
